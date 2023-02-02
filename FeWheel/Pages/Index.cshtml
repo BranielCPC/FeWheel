@@ -1,0 +1,28 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Support Wheel Of Fate";
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>Support Wheel of Fate</title>
+<link rel="stylesheet" href="css/site.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.0/index.global.min.css" />
+<script src='https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/moment@2.29.0/moment.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.0/index.global.min.js'></script>
+<script src="js/site.js"></script>
+</head>
+
+<body>
+    <h1>Support Wheel of Fate</h1>
+    <div id="calendarContainer">
+        <button id="generateCalendar">Generate Calendar</button>
+        <button id="scheduleEngineers">Generate Engineer</button>
+        <div id='calendar'></div>
+    </div>
+</body>
+</html>
