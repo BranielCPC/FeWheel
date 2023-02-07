@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 
 
-        var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddDbContext<Database>(opt => opt.UseInMemoryDatabase("Data List"));
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
         // Add services to the container.
@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddAutoMapper(typeof(MappingConfig)); //Automates the mapping
 
-        var app = builder.Build();
+var app = builder.Build();
 
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
@@ -37,6 +37,7 @@ using Microsoft.EntityFrameworkCore;
 
         DataItems.MapGet("/", GetAllData);
         DataItems.MapGet("/{id}", GetEngineer);
+       // DataItems.MapPost("/", CreateEng);
         DataItems.MapPut("/{id}", UpdateData);
         DataItems.MapDelete("/{id}", DeleteData);
 
@@ -54,7 +55,21 @@ using Microsoft.EntityFrameworkCore;
                     ? TypedResults.Ok(new DataDTO(data))
             : TypedResults.NotFound();
         }
+/*
+        static async Task<IResult> CreateEng(DataDTO dataDTO, Database db)
+        {
+            var data = new Data
+            {
+                IsComplete = dataDTO.IsComplete,
+                Name = dataDTO.Name
+            };
 
+            db.Datas.Add(data);
+            await db.SaveChangesAsync();
+
+            return TypedResults.Created($"/Dataitems/{Data.Id}", dataDTO);
+        }
+*/
         static async Task<IResult> UpdateData(int id, DataDTO dataDTO, Database db)
         {
             var data = await db.Datas.FindAsync(id);
